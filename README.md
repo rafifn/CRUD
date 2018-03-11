@@ -6,3 +6,4 @@
 - run gulp
 - run nodemon app.js
 - and then run localhost:3000 at your browser
+- Email: bot@example.com && Password: bot
