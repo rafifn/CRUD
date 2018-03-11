@@ -1,4 +1,4 @@
-# How to run this project ?
+# Get Started
 - clone repo
 - install node.js
 - open terminal at this project
