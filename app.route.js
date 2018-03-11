@@ -20,10 +20,14 @@
       })
       .state('app.dashboard', {
         url: '/dashboard',
-        params: ['id'],
         controller: 'DashboardController',
         templateUrl: 'view/dashboard/dashboard.html'
       })
+      // .state('app.modaldetail', {
+      //   params: ['id'],
+      //   controller: 'ModalController',
+      //   templateUrl: 'view/modaldetail.html'
+      // })
     $urlRouterProvider.when('', '/')
     $urlRouterProvider.otherwise('/404')
   }

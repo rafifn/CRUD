@@ -29,13 +29,15 @@
 	    });
  	}
 
- 	$http.put(url + $stateParams.id,data,headers).then(function(response)
-    {
-    	console.log(response)
-    	$scope.result = response.data.result;
-    	console.log($scope.result);
+ 	// $http.put(url + $stateParams.id,data,headers).then(function(response)
+  //   {
+  //   	console.log(response)
+  //   	$scope.result = response.data.result;
+  //   	console.log($scope.result);
     	
-    });
+  //   });
+
+ 	
 		// Get the modal
 	var modal = document.getElementById('myModal');
 
