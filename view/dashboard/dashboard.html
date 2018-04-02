@@ -4,8 +4,8 @@
 			<div class="navbar-brand">
 				<b>Product List</b>
 			</div>
-			<button class="create" id="btnCreate" title="Create New" data-toggle="modal" data-target="#myModalCreate" ng-click="btnCreate()">Create new</button>
-				<a ui-sref="login" class="logout pull-right"><b>Log out</b></a>
+			<button class="create" id="btnCreate" title="Create New" data-toggle="modal" data-target="#myModalCreate">Create new</button>
+			<a ui-sref="login" class="logout pull-right"><b>Log out</b></a>
 		</div>
 	</nav>
 	<div class="divider"></div>
@@ -13,23 +13,24 @@
 <div class="container">
 	<div class="content">
 		<div class="row">
-			<div class="col-md-3" ng-repeat="data in result">
+			<div class="col-md-3" ng-repeat="vm in result">
 				<div class="thumbnail">
-					<button type="button" class="btn btn-default btn-sm" id="btnEdit" title="Edit Data" data-toggle="modal" data-target="#myModalEdit" ui-sref="modaldetail({id: '{{data.id}}'})"">
+					<!-- <button type="button" class="btn btn-default btn-sm" id="btnDelete" ng-click="delete(datas.id)" title="Delete" data-toggle="modal" data-target="#myModalDelete">
+						<span class="glyphicon glyphicon-trash"></span>
+			        </button> -->
+			        <button type="button" class="btn btn-default btn-sm" id="btnEdit" ng-click="edit(vm.id)" title="Edit" data-toggle="modal" data-target="#myModalEdit">
 			        	<span class="glyphicon glyphicon-pencil"></span> 
 			        </button>
-			        <!-- <button type="button" class="btn btn-default btn-sm">
-			        	<span class="glyphicon glyphicon-trash"></span>
-			        </button> -->
-					<img class="img-responsive" ng-src="{{data.imageurl}}">
+					<img class="img-responsive" ng-src="{{vm.imageurl}}">
 					<div class="caption">
-						<h3>{{data.name}}</h3>
-						<p>$ {{data.price}}</p>
+						<h3>{{vm.name}}</h3>
+						<p>$ {{vm.price}}</p>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
+
 	<div class="modal fade" id="myModalCreate" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
 			<div class="modal-content">
@@ -39,28 +40,29 @@
 					</button>
 					<h4 class="modal-title">Create New</h4>
 				</div>
-				<div class="modal-body" ng-submit="addData">
+				<div class="modal-body">
 					<div class="form-group">
 						<label class="control-label">Name</label>
-						<input type="text" id="createNama" ng-model="result.name" class="form-control">
+						<input type="text" id="createNama" ng-model="vm.name" class="form-control">
 					</div>
 					<div class="form-group">
 						<label class="control-label">Price</label>
-						<input type="number" id="createPrice" ng-model="result.price" class="form-control">
+						<input type="number" id="createPrice" ng-model="vm.price" class="form-control">
 					</div>
-					<input type="file" class="btn btn-primary" name="data-foto" id="dataFoto"/>
+					<input type="text" class="form-control" id="image" placeholder="Enter Image" name="image" ng-model="vm.imageurl">
 				</div>
 				<div class="modal-footer">
-					<button type="submit" class="btn btn-default btn-round" data-dismiss="modal" aria-hidden="true">
+					<button type="submit" class="btn btn-default btn-round" ng-click="add(vm)" aria-hidden="true">
 						<i class="material-icons">Submit</i>
 					</button>
-					<button type="button" class="btn btn-default btn-round" data-dismiss="modal" aria-hidden="true">
+					<button type="button" class="btn btn-default btn-round" data-dismiss="modal" ng-click="cancel()" aria-hidden="true">
 						<i class="material-icons">Cancel</i>
 					</button>
 				</div>
 			</div>
 		</div>
 	</div>
+	
 
 	<div class="modal fade" id="myModalEdit" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		<div class="modal-dialog">
@@ -74,15 +76,40 @@
 				<div class="modal-body">
 					<div class="form-group">
 						<label class="control-label">Name</label>
-						<input type="text" id="editId" ng-model="result.name" class="form-control">
+						<input type="text" id="editId" ng-model="vm.name" ng-init="DashboardController='vm.name'" value="vm.name" class="form-control">
 					</div>
 				</div>
 				<div class="modal-footer">
-					<button type="submit" id="submitEditHeadlines" class="btn btn-default btn-round" aria-hidden="true">Submit</button>
-					<button type="button" id="batalEditHeadlines" class="btn btn-default btn-round" data-dismiss="modal" aria-hidden="true">Cancel</button>
+					<button type="submit" class="btn btn-default btn-round" aria-hidden="true" ng-click="submit(vm)">Submit</button>
+					<button type="button" class="btn btn-default btn-round" data-dismiss="modal" aria-hidden="true">Cancel</button>
 				</div>
 				
 			</div>
 		</div>
 	</div>
+
+	<div class="modal fade" id="myModalDelete" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" id="closeDelete" data-dismiss="modal" aria-hidden="true">
+						<i class="material-icons">close</i>
+					</button>
+					<h4 class="modal-title">Delete</h4>
+				</div>
+				<div class="modal-body">
+					<div class="form-group">
+						<label class="control-label">Are you sure want to delete {{vm.name}} ?</label>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="submit" class="btn btn-default btn-round" ng-click="ok()">Yes</button>
+					<button type="button" class="btn btn-default btn-round" data-dismiss="modal" aria-hidden="true">No</button>
+				</div>
+				
+			</div>
+		</div>
+	</div>
+
+	
 </div>

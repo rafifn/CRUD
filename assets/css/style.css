@@ -118,7 +118,7 @@ nav {
 
 .modal-header {
     padding: 2px 16px;
-    background-color: #5cb85c;
+    background-color: #009688;
     color: white;
 }
 
@@ -126,7 +126,12 @@ nav {
 
 .modal-footer {
     padding: 2px 16px;
-    background-color: #5cb85c;
+    background-color: #009688;
     color: white;
     text-align: center;
+}
+.thumbnail:hover {
+    -ms-transform: scale(1.1); /* IE 9 */
+    -webkit-transform: scale(1.1); /* Safari 3-8 */
+    transform: scale(1.1); 
 }
