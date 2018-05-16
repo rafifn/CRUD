@@ -18,7 +18,7 @@ angular
           else{
           alert("Email or Password incorrect");
           }
-        localStorage.setItem("token", "eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJleHAiOjE1MjI3NTQyMzN9.N6LbagF7sLeEqECnKGUYUQ2ud0z6R-IhvPOrhdOLSMo");
+        localStorage.setItem("token", result.result.access_token);
 
         
       })
